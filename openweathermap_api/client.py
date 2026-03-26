@@ -82,16 +82,3 @@ class Client():
         
         except requests.HTTPError as err:
             print(err)
-try:
-    key = "0efb8b905c24e185100b24f4f29bcaf7"
-    client = Client(api_key=key)
-    client.geocode("95843", "US")
-
-    print(client.current_weather())
-
-except exceptions.ApiKeyError as e:
-    print(f"ApiKeyError: {e}")
-except exceptions.ApiBadRequestError as e:
-    print(f"ApiBadRequestError: {e}")
-except exceptions.ApiNotFoundError as e:
-    print(f"ApiNotFoundError: {e}")
