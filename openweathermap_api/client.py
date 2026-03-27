@@ -70,15 +70,3 @@ class Client():
             match http_response.status_code:
                 case 400:
                     raise exceptions.ApiBadRequestError(http_err_response, 400) from err
-
-    def hourly_weather(self, flag_xml: bool = True):
-        api_request = f"https://pro.openweathermap.org/data/2.5/forecast/hourly?lat={self.location_data.lat}&lon={self.location_data.lon}&appid={self.api_key}"
-
-        try:
-            api_response = requests.get(api_request)
-            api_response.raise_for_status
-
-            return api_response.json()
-        
-        except requests.HTTPError as err:
-            print(err)
